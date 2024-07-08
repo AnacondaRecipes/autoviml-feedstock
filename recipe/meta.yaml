@@ -66,6 +66,7 @@ about:
   dev_url: https://github.com/AutoViML/Auto_ViML/
   license: Apache-2.0
   license_family: Apache
+  license_file: LICENSE
   summary: Automatically Build Multiple ML Models with a Single Line of Code.
   description: |
     Auto_ViML was designed for building High Performance Interpretable Models
