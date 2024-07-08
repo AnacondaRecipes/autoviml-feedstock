@@ -1,0 +1,41 @@
+diff --git a/autoviml/Auto_ViML.py b/autoviml/Auto_ViML.py
+index 2d0fd65..0056224 100755
+--- a/autoviml/Auto_ViML.py
++++ b/autoviml/Auto_ViML.py
+@@ -64,7 +64,7 @@ from autoviml.Auto_NLP import Auto_NLP
+ from autoviml.sulov_method import FE_remove_variables_using_SULOV_method, remove_highly_correlated_vars_fast
+ 
+ from autoviml.classify_method import classify_columns
+-from imbalanced_ensemble.ensemble import SelfPacedEnsembleClassifier
++from imbens.ensemble import SelfPacedEnsembleClassifier
+ 
+ from sklearn.metrics import mean_absolute_error, mean_squared_error
+ 
+@@ -97,7 +97,7 @@ from distutils.version import LooseVersion
+ ## Import sklearn
+ from sklearn.model_selection import cross_val_score, KFold, StratifiedKFold
+ from sklearn.metrics import auc
+-from scipy import interp
++from scipy import interpolate as interp
+ import pandas as pd
+ 
+ ################################################################
+diff --git a/setup.py b/setup.py
+index 95ed8cd..b959e2e 100755
+--- a/setup.py
++++ b/setup.py
+@@ -28,12 +28,12 @@ setuptools.setup(
+         "textblob",
+         "nltk",
+         "regex",
+-        "xgboost>=0.82,<1.7",
++        "xgboost>=0.82",
+         "vaderSentiment",
+         "imbalanced-learn>=0.10.1",
+         "shap>=0.36.0",
+         "imbalanced_ensemble>=0.2.0",
+-        "scikit-learn>=0.24,<=1.2.2",
++        "scikit-learn>=0.24",
+         "lightgbm>=3.0.0",
+     ],
+     classifiers=[
