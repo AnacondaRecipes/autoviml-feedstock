@@ -16,7 +16,7 @@ build:
   number: 0
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39 or py>311]
+  skip: true  # [py<39 or py>311 or s390x]
 
 requirements:
   build:
