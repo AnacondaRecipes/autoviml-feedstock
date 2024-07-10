@@ -16,7 +16,7 @@ build:
   number: 0
   script:
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39 or py>311 or s390x]
+  skip: true  # [py<39 or py>310 or s390x]
 
 requirements:
   build:
@@ -41,7 +41,7 @@ requirements:
     - nltk
     - regex
     - scikit-learn >=0.24 #<=1.2.2
-    - xgboost >=0.82
+    - xgboost >=0.82,<1.7
     - vadersentiment
     - imbalanced-learn >=0.10.1
     - shap >=0.36.0
