@@ -16,8 +16,8 @@ print(train.shape)
 print(train.head())
 m, feats, trainm, testm = Auto_ViML(train, target, test, sample_submission,
                                     scoring_parameter=scoring_parameter,
-                                    hyper_param='GS',feature_reduction=True,
+                                    hyper_param='GS',feature_reduction=False,
                                     Boosting_Flag=True,Binning_Flag=False,
                                     Add_Poly=0, Stacking_Flag=False,
                                     Imbalanced_Flag=False,
-                                    verbose=1)
+                                    verbose=0)
