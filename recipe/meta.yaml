@@ -58,7 +58,8 @@ test:
   imports:
     - autoviml
   commands:
-    - pip check
+  # Fails on windows stating xgboost is not installed.
+    - pip check  # [not win]
 
 about:
   home: https://github.com/AutoViML/Auto_ViML/
