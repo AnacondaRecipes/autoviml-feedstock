@@ -1,0 +1,76 @@
+{% set name = "autoviml" %}
+{% set version = "0.1.800" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: aea7991735975c7c3a1a39b448e0c02e91b6bd970e39e053852d5e307c246a31
+  # Imports from imbalanced_ensemble instead of imbens.
+  patches:
+    - fix-imbens-import.patch
+
+build:
+  number: 0
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<39 or py>311 or s390x]
+
+requirements:
+  build:
+    - patch  # [unix]
+    - m2-patch  # [win]
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python
+    - numpy >=1.24.0
+    - ipython
+    - matplotlib-base >3.7.4
+    - bs4
+    - emoji
+    - jupyter
+    - seaborn
+    - catboost
+    - textblob
+    - nltk
+    - regex
+    - scikit-learn >=0.24 #<=1.2.2
+    - xgboost >=0.82,<1.7
+    - vadersentiment
+    - imbalanced-learn >=0.10.1
+    - shap >=0.36.0
+    - imbalanced-ensemble >=0.2.0
+    - lightgbm >=3.0.0
+    - pandas >=1.1.3,<2.0
+    - xlrd
+    # Undeclared dependency
+    - networkx
+
+test:
+  requires:
+    - pip
+  imports:
+    - autoviml
+  commands:
+  # Fails on windows stating xgboost is not installed.
+    - pip check  # [not win]
+
+about:
+  home: https://github.com/AutoViML/Auto_ViML/
+  doc_url: https://github.com/AutoViML/Auto_ViML/blob/master/README.md
+  dev_url: https://github.com/AutoViML/Auto_ViML/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: Automatically Build Multiple ML Models with a Single Line of Code.
+  description: |
+    Auto_ViML was designed for building High Performance Interpretable Models
+    with the fewest variables needed. The "V" in Auto_ViML stands for Variant
+    because it tries multiple models with multiple features to find you the 
+    best performing model for your dataset.
